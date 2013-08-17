@@ -192,7 +192,10 @@ class analyze:
 	# func = idaapi.get_next_func(here())
 	# block[0] is the  direction; block[1] is the address, block[2] is the type
     def analysis_group(self, modList):
-         # align, code, data, ascii, align-c, unknown
+		# TO CALL 
+		# k = f.analyze
+		# k.analysis_group(f.modlist)
+        # align, code, data, ascii, align-c, unknown
         for block in modList:
             if block[0] == "up" and block[2] == "align":
                 print 'called'
