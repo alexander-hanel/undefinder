@@ -3,7 +3,7 @@ Name:
         undefinder.py
 
 Version:
-        0.1
+        0.2
         
 Description:
 		IDAPython script that searches for data between known functions
@@ -190,34 +190,36 @@ class undefinder:
 
 class analyze:
 	# func = idaapi.get_next_func(here())
-    def analysis_group(self):
+	# block[0] is the  direction; block[1] is the address, block[2] is the type
+    def analysis_group(self, modList):
          # align, code, data, ascii, align-c, unknown
-        for block in self.modList:
-            if block[0] == "up" and block[1] == "align":
-                print 
-            if block[0] == "down" and block[1] == "align":
+        for block in modList:
+            if block[0] == "up" and block[2] == "align":
+                print 'called'
+            if block[0] == "down" and block[2] == "align":
                 pass
-            if block[0] == "up" and block[1] == "align-c":
+            if block[0] == "up" and block[2] == "align-c":
                 pass
-            if block[0] == "down" and block[1] == "align-c":
+            if block[0] == "down" and block[2] == "align-c":
                 # if down align-c = pointer will be at the start of the code
                 pass
-            if block[0] == "up" and block[1] == "code":
+            if block[0] == "up" and block[2] == "code":
                 pass
-            if block[0] == "down" and block[1] == "code":
+            if block[0] == "down" and block[2] == "code":
                 pass
-            if block[0] == "up" and block[1] == "data":
+            if block[0] == "up" and block[2] == "data":
                 pass
-            if block[0] == "down" and block[1] == "data":
+            if block[0] == "down" and block[2] == "data":
                 pass
-            if block[0] == "up" and block[1] == "ascii":
+            if block[0] == "up" and block[2] == "ascii":
                 pass
-            if block[0] == "down" and block[1] == "ascii":
+            if block[0] == "down" and block[2] == "ascii":
                 pass
-            if block[0] == "up" and block[1] == "unknown":
+            if block[0] == "up" and block[2] == "unknown":
                 pass
-            if block[0] == "down" and block[1] == "unknown":
+            if block[0] == "down" and block[2] == "unknown":
                 pass
+
 
     def test_mov_edi2_find(self, addr):
             'return the address of the next mov edi, edi. Distance needs to be validated' 
